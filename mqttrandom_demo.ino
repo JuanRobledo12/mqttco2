@@ -1,7 +1,9 @@
+/* CO2 sensor simulation, publish data in an MQTT network.
+Created by Juan Antonio Robledo Lara https://github.com/TonyRob127/mqttco2
+Last mod: Feb 4th 2022 */
+
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
-
-//functions
 
 //callbacks
 void callback(char *topic, byte *payload, unsigned int length)
@@ -18,17 +20,18 @@ void callback(char *topic, byte *payload, unsigned int length)
     Serial.println("------------------");
   
   }
+  
 //WiFi info
-const char *ssid = "TP-Link_CCA5"; //Enter WiFi name
-const char *password = "46470614"; //Enter WiFi passoword
+const char *ssid = ""; //Enter WiFi name
+const char *password = ""; //Enter WiFi passoword
 
 //client/broker info
-const char *mqtt_broker = "broker.emqx.io";//Enter broker address
+const char *mqtt_broker = "192.168.0.103";//Enter broker address
 const char *topic = "co2/laboratory";
 String client_id = "sensor_3";
 const int mqtt_port = 1883; //Enter broker port
 
-//creation of clients
+//creation of WiFi and MQTT clients
 WiFiClient espClient;
 PubSubClient client(espClient);
 
@@ -50,7 +53,7 @@ void setup() {
     Serial.print("Sensor_3 IP address: "); 
     Serial.println(WiFi.localIP());
 
-    //decleare callbacks
+    //declare callbacks
     client.setCallback(callback);
     
     //Broker connection
@@ -73,8 +76,8 @@ void setup() {
           }
       }
 
-      //subscribe to topic
-      delay(1000);
+      //Subscribe to topic
+      //delay(1000);
       //Serial.print("Preparing to subscribe to topic: ");
       //Serial.println(topic);
       //client.subscribe(topic); // receives message from topic
@@ -84,10 +87,11 @@ void setup() {
 }
 
 void loop() {
+  //Publishing loop
   delay(5000);
   int randNumber = random(0,100);
   //Serial.println(randNumber);
-  String msg_string = "CO2: " + String(randNumber);
+  String msg_string = String(randNumber);
   //const char *charBuf[50];
   //msg_string.toCharArray(charBuf, 50); 
   //Serial.println(msg_string);
