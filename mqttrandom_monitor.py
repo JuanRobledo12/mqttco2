@@ -1,3 +1,7 @@
+#CO2 monitor simulation, subscribes to several topics for CO2 data.
+#Created by Juan Antonio Robledo Lara https://github.com/TonyRob127/mqttco2
+#Last mod: Feb 4th 2022
+
 import paho.mqtt.client as mqtt
 import time
 
@@ -35,7 +39,7 @@ def on_subscribe(client, userdata, mid, granted_qos):
 
 #client info and declaration
 client_id = "monitor_demo"
-host_ad = "192.168.6.61" #CHANGE IT IF USING OTHER BROKER
+host_ad = '192.168.6.61' #CHANGE IT IF USING OTHER BROKER
 client = mqtt.Client(client_id)
 topic_id_lst = [('co2/library', 0), ('co2/classroom1b', 0), ('co2/laboratory', 0)]
 

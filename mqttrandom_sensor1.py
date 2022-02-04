@@ -1,3 +1,7 @@
+#CO2 sensor simulation, publish data in an MQTT network.
+#Created by Juan Antonio Robledo Lara https://github.com/TonyRob127/mqttco2
+#Last mod: Feb 4th 2022
+
 import paho.mqtt.client as mqtt
 import time
 from random import random
@@ -29,7 +33,7 @@ def on_subscribe(client, userdata, mid, granted_qos):
 
 #client/broker info
 client_id = 'sensor_1'
-broker_ad = '192.168.6.61' #CHANGE IT IF USING OTHER BROKER
+broker_ad = '192.168.0.103' #CHANGE IT IF USING OTHER BROKER
 topic_id = 'co2/library'
 client = mqtt.Client(client_id)
 
@@ -67,5 +71,5 @@ print("-----------------------")
 while True:
     co2_value = random() * 100
     form_co2_value = "{:.2f}".format(co2_value)
-    client.publish(topic_id, payload='CO2: ' + str(form_co2_value))
+    client.publish(topic_id, payload=form_co2_value)
     time.sleep(5)
