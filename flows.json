@@ -1,0 +1,411 @@
+[
+    {
+        "id": "fc602606e3200707",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a6125989ed5333a3",
+        "type": "mqtt in",
+        "z": "fc602606e3200707",
+        "name": "co2/library",
+        "topic": "co2/library",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "335005fcdbab15b6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "5f9ad6e2478c6a1d"
+            ]
+        ]
+    },
+    {
+        "id": "0cfdec1aba193fb8",
+        "type": "ui_chart",
+        "z": "fc602606e3200707",
+        "name": "Library chart",
+        "group": "156ccbf2a60cfec8",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "co2 library chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data available",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 810,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77d408119300b38f",
+        "type": "ui_gauge",
+        "z": "fc602606e3200707",
+        "name": "Library Gauge",
+        "group": "329bc3b5c19cf1b9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "co2 level library",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "33.33",
+        "seg2": "66.66",
+        "className": "",
+        "x": 820,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "5b216668a96ae6da",
+        "type": "mqtt in",
+        "z": "fc602606e3200707",
+        "name": "co2/classroom1b",
+        "topic": "co2/classroom1b",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "335005fcdbab15b6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 460,
+        "wires": [
+            [
+                "83336b313e2a6459"
+            ]
+        ]
+    },
+    {
+        "id": "dc5097dc22093891",
+        "type": "mqtt in",
+        "z": "fc602606e3200707",
+        "name": "co2/laboratory",
+        "topic": "co2/laboratory",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "335005fcdbab15b6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 560,
+        "wires": [
+            [
+                "ecee6954a6ca827f"
+            ]
+        ]
+    },
+    {
+        "id": "ecee6954a6ca827f",
+        "type": "function",
+        "z": "fc602606e3200707",
+        "name": "string to num",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 560,
+        "wires": [
+            [
+                "6171f766b5ee62f6",
+                "127d88c4c291a79b"
+            ]
+        ]
+    },
+    {
+        "id": "5f9ad6e2478c6a1d",
+        "type": "function",
+        "z": "fc602606e3200707",
+        "name": "string to num",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "0cfdec1aba193fb8",
+                "77d408119300b38f"
+            ]
+        ]
+    },
+    {
+        "id": "83336b313e2a6459",
+        "type": "function",
+        "z": "fc602606e3200707",
+        "name": "string to num",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "5b363c4517855a1f",
+                "c438fa2f133745bd"
+            ]
+        ]
+    },
+    {
+        "id": "5b363c4517855a1f",
+        "type": "ui_gauge",
+        "z": "fc602606e3200707",
+        "name": "Classroom 1b Gauge",
+        "group": "329bc3b5c19cf1b9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "co2 level classroom 1b",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "33.33",
+        "seg2": "66.66",
+        "className": "",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "6171f766b5ee62f6",
+        "type": "ui_gauge",
+        "z": "fc602606e3200707",
+        "name": "Laboratory Gauge",
+        "group": "329bc3b5c19cf1b9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "co2 level laboratory",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "33.33",
+        "seg2": "66.66",
+        "className": "",
+        "x": 830,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c438fa2f133745bd",
+        "type": "ui_chart",
+        "z": "fc602606e3200707",
+        "name": "Classroom 1b Chart",
+        "group": "156ccbf2a60cfec8",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "co2 classroom 1b chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data available",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "127d88c4c291a79b",
+        "type": "ui_chart",
+        "z": "fc602606e3200707",
+        "name": "Laboratory Chart",
+        "group": "156ccbf2a60cfec8",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "co2 laboratory chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data available",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 830,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "335005fcdbab15b6",
+        "type": "mqtt-broker",
+        "name": "Raspberry Pi Mosquitto",
+        "broker": "192.168.0.103",
+        "port": "1883",
+        "clientid": "montor_nodered",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "156ccbf2a60cfec8",
+        "type": "ui_group",
+        "name": "Charts",
+        "tab": "17a31d5f77bae674",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "329bc3b5c19cf1b9",
+        "type": "ui_group",
+        "name": "Gauges",
+        "tab": "9c304be491fa1b08",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "17a31d5f77bae674",
+        "type": "ui_tab",
+        "name": "School Graphs",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9c304be491fa1b08",
+        "type": "ui_tab",
+        "name": "School Gauges",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
